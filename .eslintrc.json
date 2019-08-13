@@ -3,7 +3,8 @@
       "es6": true,
       "node": true,
       "commonjs": true,
-      "jest": true
+      "jest": true,
+      "jest/globals": true
   },
   "extends": [
       "google",
@@ -13,11 +14,11 @@
   "parserOptions": {
       "ecmaVersion": 2018
   },
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "jest"],
   "rules": {
       "prettier/prettier": "error",
       "no-console":"off",
       "no-var": "error",
-      "max-len": [2, {"code": 120, "tabWidth": 2, "ignoreUrls": true}]
+      "max-len": [2, {"code": 140, "tabWidth": 2, "ignoreUrls": true}]
   }
 }

@@ -11,10 +11,11 @@ exports.handler = async (event, context) => {
   } else {
     try {
       const decrypted = await decryptAll([SERVICE_WORKER_KEY_ENCRYPTED, SLACK_SECRET_ENCRYPTED]);
-
       const [sheets, slack] = decrypted.map(elem => elem.Plaintext.toString('ascii'));
       process.env['SERVICE_WORKER_KEY'] = sheets;
       process.env['SLACK_SECRET'] = slack;
+
+      // eslint-disable-next-line require-atomic-updates
       isDecrypted = true;
       return processEvent(event, context);
     } catch (err) {

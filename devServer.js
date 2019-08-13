@@ -5,8 +5,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const processEvent = require('./lib/eventHandler');
 
-const env = process.env;
-
 const app = express();
 
 app.use(morgan('combined'));
@@ -16,7 +14,7 @@ const asyncMiddleware = fn => (req, res, next) => {
   Promise.resolve(fn(req, res, next)).catch(next);
 };
 
-//eslint-disable-next-line
+// eslint-disable-next-line
 app.use((err, req, res, next) => {
   const message = err.expose ? err.message : 'An error occured';
   res.status(err.status || 500);
@@ -27,7 +25,7 @@ app.post(
   '/',
   asyncMiddleware(async (req, res) => {
     const { event, context } = req.body;
-    const { statusCode, body } = await processEvent(event, context, env);
+    const { statusCode, body } = await processEvent(event, context);
     res.status(statusCode);
     res.json(body);
   })

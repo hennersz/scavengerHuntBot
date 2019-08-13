@@ -15,12 +15,17 @@
     "lint": "eslint --ignore-path .gitignore . || (echo \"There are linting errors, please run 'yarn run fix-code'\" && exit 1)",
     "fix-code": "prettier-eslint --write 'index.js' 'devServer.js' 'lib/**/*.js' '__test__/**/*.js'"
   },
-  "dependencies": {},
+  "dependencies": {
+    "qs": "^6.7.0"
+  },
   "devDependencies": {
+    "aws-sdk": "^2.508.0",
+    "aws-sdk-mock": "^4.5.0",
     "dotenv": "^8.0.0",
-    "eslint": "^5.4.0",
+    "eslint": "^6.1.0",
     "eslint-config-google": "^0.13.0",
     "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-jest": "^22.15.1",
     "eslint-plugin-prettier": "^3.1.0",
     "express": "^4.17.1",
     "jest": "^24.8.0",
